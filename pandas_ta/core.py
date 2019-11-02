@@ -379,6 +379,13 @@ class AnalysisIndicators(BasePandasObject):
         self._append(result, **kwargs)
         return result
 
+    def stoch_rsi(self, close=None, length=None, smoothK=None, smoothD=None, drift=None, offset=None, **kwargs):
+        close = self._get_column(close, 'close')
+        from .momentum.rsi import stoch_rsi
+        result = stoch_rsi(close=close, length=length, smoothK=smoothK, smoothD=smoothD, drift=drift, offset=offset, **kwargs)
+        self._append(result, **kwargs)
+        return result
+
     def trix(self, close=None, length=None, drift=None, offset=None, **kwargs):
         close = self._get_column(close, 'close')
         from .momentum.trix import trix
