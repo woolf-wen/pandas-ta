@@ -15,7 +15,7 @@ def stoch(high, low, close, fast_k=None, slow_k=None, slow_d=None, offset=None, 
     offset = get_offset(offset)
 
     # Calculate Result
-    lowest_low   =  low.rolling(slow_k).min()
+    lowest_low   = low.rolling(slow_k).min()
     highest_high = high.rolling(slow_k).max()
 
     fastk = 100 * (close - lowest_low) / (highest_high - lowest_low)

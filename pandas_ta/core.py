@@ -386,6 +386,15 @@ class AnalysisIndicators(BasePandasObject):
         self._append(result, **kwargs)
         return result
 
+    def stoch_cci(self, high=None, low=None, close=None, length=None, smoothK=None, smoothD=None, offset=None, **kwargs):
+        high = self._get_column(high, 'high')
+        low = self._get_column(low, 'low')
+        close = self._get_column(close, 'close')
+        from .momentum.cci import stoch_cci
+        result = stoch_cci(high=high, low=low, close=close, length=length, smoothK=smoothK, smoothD=smoothD, offset=offset, **kwargs)
+        self._append(result, **kwargs)
+        return result
+
     def trix(self, close=None, length=None, drift=None, offset=None, **kwargs):
         close = self._get_column(close, 'close')
         from .momentum.trix import trix
@@ -680,6 +689,13 @@ class AnalysisIndicators(BasePandasObject):
         close = self._get_column(close, 'close')
         from .statistics.zscore import zscore
         result = zscore(close=close, length=length, std=std, offset=offset, **kwargs)
+        self._append(result, **kwargs)
+        return result
+
+    def bias(self, close=None, length=None, offset=None, **kwargs):
+        close = self._get_column(close, 'close')
+        from .statistics.bias import bias
+        result = bias(close=close, length=length, offset=offset, **kwargs)
         self._append(result, **kwargs)
         return result
 

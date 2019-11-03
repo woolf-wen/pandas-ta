@@ -22,7 +22,7 @@ else:
 from .momentum.ao import ao
 from .momentum.apo import apo
 from .momentum.bop import bop
-from .momentum.cci import cci
+from .momentum.cci import cci, stoch_cci
 from .momentum.cg import cg
 from .momentum.cmo import cmo
 from .momentum.coppock import coppock
@@ -81,6 +81,7 @@ from .statistics.skew import skew
 from .statistics.stdev import stdev
 from .statistics.variance import variance
 from .statistics.zscore import zscore
+from .statistics.bias import bias
 
 # Trend
 from .trend.adx import adx
