@@ -370,12 +370,12 @@ class AnalysisIndicators(BasePandasObject):
         self._append(result, **kwargs)
         return result
 
-    def stoch(self, high=None, low=None, close=None, fast_k=None, slow_k=None, slow_d=None, offset=None, **kwargs):
+    def stoch(self, high=None, low=None, close=None, fast_k=None, fast_d=None, slow_d=None, offset=None, **kwargs):
         high = self._get_column(high, 'high')
         low = self._get_column(low, 'low')
         close = self._get_column(close, 'close')
         from .momentum.stoch import stoch
-        result = stoch(high=high, low=low, close=close, fast_k=fast_k, slow_k=slow_k, slow_d=slow_d, offset=offset, **kwargs)
+        result = stoch(high=high, low=low, close=close, fast_k=fast_k, fast_d=fast_d, slow_d=slow_d, offset=offset, **kwargs)
         self._append(result, **kwargs)
         return result
 
