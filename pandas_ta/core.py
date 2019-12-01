@@ -699,7 +699,22 @@ class AnalysisIndicators(BasePandasObject):
         self._append(result, **kwargs)
         return result
 
+    def turningpoints(self, high=None, low=None, close=None, volume=None, length=None, offset=None, **kwargs):
+        high = self._get_column(high, 'high')
+        low = self._get_column(low, 'low')
+        close = self._get_column(close, 'close')
+        volume = self._get_column(volume, 'volume')
+        from .statistics.turningpoints import turning_point
+        result = turning_point(high=high, low=low, close=close, volume=None, length=length, offset=offset, **kwargs)
+        self._append(result, **kwargs)
+        return result
 
+    def entropy(self, close=None, length=None,  offset=None, **kwargs):
+        close = self._get_column(close, 'close')
+        from .statistics.entropy import entropy
+        result = entropy(close=close, length=length, offset=offset, **kwargs)
+        self._append(result, **kwargs)
+        return result
 
     # Trend Indicators
     def adx(self, high=None, low=None, close=None, drift=None, offset=None, **kwargs):
