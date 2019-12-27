@@ -610,6 +610,15 @@ class AnalysisIndicators(BasePandasObject):
         self._append(result, **kwargs)
         return result
 
+    def td(self, high=None, low=None, close=None, offset=None, **kwargs):
+        high = self._get_column(high, 'close')
+        low = self._get_column(low, 'close')
+        close = self._get_column(close, 'close')
+        from .overlap.td import td
+        result = td(high=high, low=low, close=close, offset=offset, **kwargs)
+        self._append(result, **kwargs)
+        return result
+
 
     # Performance Indicators
     def log_return(self, close=None, length=None, cumulative=False, percent=False, offset=None, **kwargs):

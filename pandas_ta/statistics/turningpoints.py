@@ -3,7 +3,7 @@ from ..overlap import vwap
 from ..utils import get_offset, verify_series
 
 def turning_point(high, low, close, volume, length=None, offset=None, **kwargs):
-    """Indicator: Bias (i.e Relative Deviation)"""
+    """Indicator: turnning point """
     # Validate Arguments
     close = verify_series(close)
     length = int(length) if length and length > 1 else 30
